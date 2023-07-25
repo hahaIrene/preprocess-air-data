@@ -57,13 +57,13 @@ for id in unique_device_ids:
     dataDict[id] = []
 
 
-
+print(0)
 
 
 for index, row in dataMerges.iterrows():
     # print(row['c1'], row['c2'])
     # print(row['VOC(ppb)'])
-
+    print(index)
 
 
     my_row = [
@@ -83,7 +83,7 @@ for index, row in dataMerges.iterrows():
     # 丟進字典
     dataDict[row['DEVICE_ID']].append(my_row)
 
-
+print(1)
 # print(len(dataDict[7495890482])) 
 
 # # # 不需使用的小垃圾
