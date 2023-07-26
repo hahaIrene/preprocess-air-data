@@ -114,3 +114,14 @@ def deviceGroup (month, project):
         
         filepath = os.path.join(output_path, f"{key}_{month}_{project}.csv")
         df.to_csv(filepath)
+
+
+
+
+deviceGroup("01","756")
+deviceGroup("04","756")
+deviceGroup("07","756")
+
+deviceGroup("01","1032")
+deviceGroup("04","1032")
+deviceGroup("07","1032")
