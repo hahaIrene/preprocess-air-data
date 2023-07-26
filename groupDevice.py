@@ -66,7 +66,7 @@ import os
 
 
 
-os.path.exists()
+
 
 def deviceGroup (month, project):
     if os.path.exists(r'./device') == False:
