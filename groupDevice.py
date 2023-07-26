@@ -2,6 +2,7 @@ import pandas as pd
 import os
 
 
+
 # # groupby
 # dataMerges = pd.read_csv( r"./output/01_756_merge.csv")
 # # print(dataMerges)
@@ -54,7 +55,7 @@ import os
 # # 然後aggregate
 
 
-# # 叫出符合KEY的字典組DATAFRAME
+# # 叫出符合KEY的字典組DATAFRAMEos
 # for key in dataDict:
 #     # dataDict[key]
 
@@ -65,10 +66,16 @@ import os
 
 
 
-
-
+os.path.exists()
 
 def deviceGroup (month, project):
+    if os.path.exists(r'./device') == False:
+        os.makedirs(r'./device')
+
+    output_path = f'./device/{project}-{month}'
+    if os.path.exists(output_path) == False:
+        os.makedirs(output_path)
+    
     dataMerges = pd.read_csv(f"./output/{month}_{project}_merge.csv")
     unique_device_ids =list(dataMerges['DEVICE_ID'].unique())
     dataDict = {
@@ -105,4 +112,5 @@ def deviceGroup (month, project):
                                                 'TEMPERATURE(℃)','HUMIDITY(%)','WIND_SPEED(m/sec)','VOC(ppb)',
                                                 'WIND_DIRECT(degrees)'])
         
-        df.to_csv(f"./device/{key}_{month}_{project}.csv")
+        filepath = os.path.join(output_path, f"{key}_{month}_{project}.csv")
+        df.to_csv(filepath)
