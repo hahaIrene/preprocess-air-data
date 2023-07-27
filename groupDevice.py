@@ -119,9 +119,9 @@ def deviceGroup (month, project):
 
 
 deviceGroup("01","756")
-deviceGroup("04","756")
-deviceGroup("07","756")
+# deviceGroup("04","756")
+#deviceGroup("07","756")
 
-deviceGroup("01","1032")
+# deviceGroup("01","1032")
 deviceGroup("04","1032")
 deviceGroup("07","1032")
