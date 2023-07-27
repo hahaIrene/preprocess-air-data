@@ -17,15 +17,15 @@ def dataMerge(data_path, output_file, project):
         data = pd.read_csv(subPath)
         data.append(data)
     mergeData = pd.concat(data, axis=0)
+    # rename columns
+    new_column = {
+        'PM2_5(μg/m^3)': 'PM2_5(μg/m3)',
+        'VOC()': 'VOC(ppb)'
+    }
+    mergeData.rename(columns=new_column, inplace=True)
+    
     mergeData.to_csv(output_file) 
 
-    # data_1032 = []
-    # for fileName in project_1032:
-    #     subPath = os.path.join(data_path, fileName)
-    #     data = pd.read_csv(subPath)
-    #     data_1032.append(data)
-    # mergeData_1032 = pd.concat(data_1032, axis=0)
-    # mergeData_1032.to_csv(output_file_1032)
 
 if __name__ == "__main__":
     months = ["01", "04", "07"]
