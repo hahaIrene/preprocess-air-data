@@ -103,7 +103,7 @@ def deviceGroup (month, project):
         ]
 
     
-    dataDict[row['DEVICE_ID']].append(my_row)
+        dataDict[row['DEVICE_ID']].append(my_row)
 
 
     # Dictionary = {
@@ -116,23 +116,25 @@ def deviceGroup (month, project):
 
     for key in dataDict:
         # dataDict[key]
-
+        # 找錯 有問題不會停止會繼續跑
         try:
-        df = pd.DataFrame(np.array(dataDict[key]), columns=['DEVICE_ID','LON', 'LAT', 'TIME', 'PM2_5(μg/m3)','PM10(mg/m3)',
-                                                'TEMPERATURE(℃)','HUMIDITY(%)','WIND_SPEED(m/sec)','VOC(ppb)',
-                                                'WIND_DIRECT(degrees)'])
-        
-        filepath = os.path.join(output_path, f"{key}_{month}_{project}.csv")
-        df.to_csv(filepath)
-        except:
+            df = pd.DataFrame(np.array(dataDict[key]), columns=['DEVICE_ID','LON', 'LAT', 'TIME', 'PM2_5(μg/m3)','PM10(mg/m3)',
+                                                    'TEMPERATURE(℃)','HUMIDITY(%)','WIND_SPEED(m/sec)','VOC(ppb)',
+                                                    'WIND_DIRECT(degrees)'])
+            
+            filepath = os.path.join(output_path, f"{key}_{month}_{project}.csv")
+            df.to_csv(filepath)
+        except Exception as e:
+            print(e)
+            
 
 
 
 
-deviceGroup("01","756")
-deviceGroup("04","756")
-deviceGroup("07","756")
+# deviceGroup("01","756")
+# deviceGroup("04","756")
+# deviceGroup("07","756")
 
-deviceGroup("01","1032")
+# deviceGroup("01","1032")
 deviceGroup("04","1032")
 deviceGroup("07","1032")

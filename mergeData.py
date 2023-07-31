@@ -21,11 +21,11 @@ def dataMerge(data_path, output_file, project):
 
     mergeData = pd.concat(data, axis=0)
     # rename columns
-    new_column = {
-        'PM2_5(μg/m^3)': 'PM2_5(μg/m3)',
-        'VOC()': 'VOC(ppb)'
-    }
-    mergeData.rename(columns=new_column, inplace=True)
+    # new_column = {
+    #     'PM2_5(μg/m^3)': 'PM2_5(μg/m3)',
+    #     'VOC()': 'VOC(ppb)'
+    # }
+    # mergeData.rename(columns=new_column, inplace=True)
     
     mergeData.to_csv(output_file) 
 
