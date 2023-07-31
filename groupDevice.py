@@ -70,6 +70,7 @@ import os
 
 
 def deviceGroup (month, project):
+    # 檢查是不是有存在這個資料夾
     if os.path.exists(r'./device') == False:
         os.makedirs(r'./device')
 
