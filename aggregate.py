@@ -27,29 +27,41 @@ def aggregateData(dataDevice, newAggregate):
 
         porjects = pd.read_csv(dataDevice, parse_dates=["TIME"])
         data_aggregated = porjects.resample("15T",
-                                            on="TIME").agg({"PM2_5(μg/m3)": ['sum', 'min', 'max', 'std'],
-                                                                "PM10(mg/m3)":  ['sum', 'min', 'max', 'std'],
-                                                                "TEMPERATURE(℃)":  ['sum', 'min', 'max', 'std'],
-                                                                "HUMIDITY(%)":  ['sum', 'min', 'max', 'std'],
-                                                                "VOC(ppb)":  ['sum', 'min', 'max', 'std'],
-                                                                })
+                                            on="TIME").agg({"PM2_5(μg/m3)": ['mean', 'min', 'max', 'std'],
+                                                            "PM10(mg/m3)":  ['mean', 'min', 'max', 'std'],
+                                                            "TEMPERATURE(℃)":  ['mean', 'min', 'max', 'std'],
+                                                            "HUMIDITY(%)":  ['mean', 'min', 'max', 'std'],
+                                                            "VOC(ppb)":  ['mean', 'min', 'max', 'std'],
+                                                        })
         
         data_aggregated.to_csv(newAggregate)
+
+
 
 
 folders_756 = ['756-01', '756-04', '756-07']
 folders_1032 = ['1032-01', '1032-04', '1032-07']
 
-# 遍歷每個資料夾，對其中的檔案執行aggregateData函式
 for folder_name in folders_756:
-    folder_path = os.path.join('/path/to/your/root/folder', folder_name)  # 替換成你實際的根資料夾路徑
+    folder_path = os.path.join(r'./device', folder_name) 
+#     列出來所有檔名！！！！再忘就是智障
     files_in_folder = os.listdir(folder_path)
     for file_name in files_in_folder:
         if file_name.endswith('.csv'):
-            file_path = os.path.join(folder_path, file_name)
-            new_aggregate_path = os.path.join('/path/to/save/aggregate', f'{file_name}_aggregated.csv')  # 替換成你想要存放聚合檔案的路徑
-            aggregateData(file_path, new_aggregate_path)
+            file_path_756 = os.path.join(folder_path, file_name)
+            new_aggregate_756 = os.path.join(r'./agg15m', f'{file_name}_aggregated.csv') 
+            aggregateData(file_path_756, new_aggregate_756)
 
+
+for folder_name in folders_1032:
+    folder_path = os.path.join(r'./device', folder_name) 
+#     列出來所有檔名！！！！再忘就是智障
+    files_in_folder = os.listdir(folder_path)
+    for file_name in files_in_folder:
+        if file_name.endswith('.csv'):
+            file_path_1032 = os.path.join(folder_path, file_name)
+            new_aggregate_1032 = os.path.join(r'./agg15m', f'{file_name}_aggregated.csv') 
+            aggregateData(file_path_1032, new_aggregate_1032)
 
 
 
