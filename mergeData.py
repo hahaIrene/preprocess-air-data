@@ -8,6 +8,7 @@ def dataMerge(data_path, output_file, project):
 
     for fileName in os.listdir(data_path):
         fileSplit = fileName.split('_')
+        # 拆第0個會拿到project的名字
         if fileSplit[0] == str(project):
             projects.append(fileName)
 

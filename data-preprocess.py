@@ -23,14 +23,14 @@ def reMerge(data_path, output_data):
         data.append(newdata)
 
     mergeData = pd.concat(data, axis=0)
-    # noNull = mergeData.dropna(axis=1, how='any')
-    # shuffled_data = mergeData.sample(frac=1)
-    noNull.to_csv(output_data) 
+    noNull = mergeData.dropna(axis=0, how='any')
+    shuffled_data = noNull.sample(frac=1)
+    shuffled_data.to_csv(output_data) 
 
 
 
 if __name__ == "__main__":
     data_path = r"./agg15m"
-    output_data = r"./forDL/raw_data.csv"
+    output_data = r"./forDL/shuffled_data.csv"
     reMerge(data_path, output_data)
    
