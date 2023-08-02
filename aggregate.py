@@ -6,22 +6,6 @@ import os
 
 
 
-# 欄位們
-# my_row = [
-        #     row['DEVICE_ID'],
-        #     row['LON'],
-        #     row['LAT'],
-        #     row['TIME'],
-        #     row['PM2_5(μg/m3)'],
-        #     row['PM10(mg/m3)'],
-        #     row['TEMPERATURE(℃)'],
-        #     row['HUMIDITY(%)'],
-        #     row['WIND_SPEED(m/sec)'],
-        #     row['VOC(ppb)'],
-        #     row['WIND_DIRECT(degrees)']
-        # ]
-
-
 
 def aggregateData(dataDevice, newAggregate):
 

@@ -20,13 +20,6 @@ def dataMerge(data_path, output_file, project):
         # print(len(data))
 
     mergeData = pd.concat(data, axis=0)
-    # rename columns
-    # new_column = {
-    #     'PM2_5(μg/m^3)': 'PM2_5(μg/m3)',
-    #     'VOC()': 'VOC(ppb)'
-    # }
-    # mergeData.rename(columns=new_column, inplace=True)
-    
     mergeData.to_csv(output_file) 
 
 
@@ -34,9 +27,9 @@ if __name__ == "__main__":
     months = ["01", "04", "07"]
     for month in months:
         data_path = f"./data/00_KSIOT_2021{month}"
-        output_file_756 = f"./newoutput/{month}_756_merge.csv"
-        output_file_1032 = f"./newoutput/{month}_1032_merge.csv"
+        output_file_756 = f"./output/{month}_756_merge.csv"
+        # output_file_1032 = f"./2output/{month}_1032_merge.csv"
 
         dataMerge(data_path, output_file_756, 756)
-        dataMerge(data_path, output_file_1032, 1032)
+        # dataMerge(data_path, output_file_1032, 1032)
 
