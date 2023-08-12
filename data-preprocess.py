@@ -25,7 +25,7 @@ def reMerge(data_path, output_data):
     mergeData = pd.concat(data, axis=0)
     noNull = mergeData.dropna(axis=0, how='any')
     shuffled_data = noNull.sample(frac=1)
-    shuffled_data.to_csv(output_data) 
+    noNull.to_csv(output_data) 
 
 
 
