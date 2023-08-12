@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 # scikit-learn 套件
 
 # 讀取原始資料
@@ -8,7 +8,7 @@ data = pd.read_csv(r"./data/shuffled_data.csv")
 
 def standardizeDataFrame(sdData, columns):
     # sdData[columns] = StandardScaler().fit_transform(sdData[columns])
-    scaler = StandardScaler()
+    scaler = MinMaxScaler(feature_range=(-1, 1))
     sdData[columns] = scaler.fit_transform(sdData[columns])
     return sdData
 
